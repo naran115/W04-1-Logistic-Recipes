@@ -101,7 +101,7 @@ This section covers all 23 quiz questions from the four StatQuest videos on logs
 
 ### Q1 — What Does a Log Do?
 
-> *Complete the statement: "If $2^5 = 32$, then $\log_2(32) =$ ___ because..." Verify in R. Why is this property useful when income values range from $7,000 to $455,000 in your dataset?*
+> *Complete the statement: "If* $2^5 = 32$, then $\log_2(32) =$ \_\_\_ because..." Verify in R. Why is this property useful when income values range from \$7,000 to \$455,000 in your dataset?
 
 If $2^5 = 32$, then $\log_2(32) = 5$, because that's all a log does, it isolates the exponent. You rewrite 32 as a power of 2, which is $2^5$, and the log just hands you that 5 back.
 
@@ -109,11 +109,11 @@ If $2^5 = 32$, then $\log_2(32) = 5$, because that's all a log does, it isolates
 log(32, base = 2)
 ```
 
-This matters for income because the values here go from about $7,000 all the way up to $455,000. On a normal number line, the gap between 1 and 8 looks huge while the gap between 1 and 1/8 looks tiny, even though both are the same magnitude of change, just in opposite directions. A log scale fixes that asymmetry so a doubling from $10,000 to $20,000 gets treated the same way as a doubling from $100,000 to $200,000, instead of looking like two totally different sized jumps.
+This matters for income because the values here go from about \$7,000 all the way up to \$455,000. On a normal number line, the gap between 1 and 8 looks huge while the gap between 1 and 1/8 looks tiny, even though both are the same magnitude of change, just in opposite directions. A log scale fixes that asymmetry so a doubling from \$10,000 to \$20,000 gets treated the same way as a doubling from \$100,000 to \$200,000, instead of looking like two totally different sized jumps.
 
 ### Q2 — Multiplication Becomes Addition
 
-> *Verify $\log(a \times b) = \log(a) + \log(b)$ using a = 4, b = 8. Why does this property make logistic regression computationally safer?*
+> *Verify* $\log(a \times b) = \log(a) + \log(b)$ using a = 4, b = 8. Why does this property make logistic regression computationally safer?
 
 ```{r}
 log(4 * 8, base = 2)
@@ -132,7 +132,7 @@ mean(orders)
 exp(mean(log(orders)))
 ```
 
-The arithmetic mean comes out to $230, but the geometric mean is way lower, around $52. This is basically the same situation from the qPCR example in the video, where one outlier run skewed the regular mean upward, but the mean calculated in log space (then converted back with `exp()`) wasn't thrown off nearly as much. The $1,000 order here is doing the same thing as that outlier run, it's dragging the arithmetic mean way above where most of the data actually sits. The geometric mean handles that better since it works in log space first, so for something skewed like customer spending it's usually the more honest read on what a "typical" customer actually looks like.
+The arithmetic mean comes out to \$230, but the geometric mean is way lower, around \$52. This is basically the same situation from the qPCR example in the video, where one outlier run skewed the regular mean upward, but the mean calculated in log space (then converted back with `exp()`) wasn't thrown off nearly as much. The \$1,000 order here is doing the same thing as that outlier run, it's dragging the arithmetic mean way above where most of the data actually sits. The geometric mean handles that better since it works in log space first, so for something skewed like customer spending it's usually the more honest read on what a "typical" customer actually looks like.
 
 ### Q4 — Log(0) and the Offset
 
@@ -147,7 +147,7 @@ log(0 + 1)
 
 ### Q5 — Base Conversion
 
-> *Compute log2, log10, and natural log for income = $49,021. After step_normalize(), does it matter which base was used for step_log()?*
+> *Compute log2, log10, and natural log for income = \$49,021. After step_normalize(), does it matter which base was used for step_log()?*
 
 ```{r}
 income_val <- 49021
@@ -230,7 +230,7 @@ log(p_respond / (1 - p_respond))
 
 To turn a predicted probability like `.pred_yes` into log(odds), it's the same formula:
 
-```r
+``` r
 log(preds$.pred_yes / (1 - preds$.pred_yes))
 ```
 
@@ -450,7 +450,7 @@ The four videos basically form one chain. We take the log of odds instead of wor
 
 When the model spits out `.pred_yes = 0.08` for a customer, it's saying that based on that customer's age, income, purchase frequency, recency, channel, region, and loyalty tier run through the fitted coefficients and converted back from log(odds) into probability, there's roughly an 8% chance that customer responds to the campaign.
 
----
+------------------------------------------------------------------------
 
 # Log Assignments {#sec-log-assignments}
 
@@ -458,14 +458,14 @@ This section covers Assignments L.1 through L.5, practicing the log operations f
 
 ## Assignment L.1 — Dollar to Log
 
-> *Customer C00005 has an income of $233,070. Convert this value to the natural log and to log base 10. Verify both results. Why does the recipe use base = 10 rather than the natural log?*
+> *Customer C00005 has an income of \$233,070. Convert this value to the natural log and to log base 10. Verify both results. Why does the recipe use base = 10 rather than the natural log?*
 
 ```{r}
 log(233070)
 log10(233070)
 ```
 
-Natural log of $233,070 comes out to about 12.36, and log base 10 comes out to about 5.37, both confirmed in R. The recipe uses `base = 10` mostly for interpretability, log base 10 lines up cleanly with orders of magnitude, so a one-unit jump in log10(income) means a tenfold jump in dollars, which is just easier to reason about than the natural log version. Like I covered in Q5, this doesn't actually change the final model once `step_normalize()` runs, since normalization absorbs whatever constant scaling difference the base introduces.
+Natural log of \$233,070 comes out to about 12.36, and log base 10 comes out to about 5.37, both confirmed in R. The recipe uses `base = 10` mostly for interpretability, log base 10 lines up cleanly with orders of magnitude, so a one-unit jump in log10(income) means a tenfold jump in dollars, which is just easier to reason about than the natural log version. Like I covered in Q5, this doesn't actually change the final model once `step_normalize()` runs, since normalization absorbs whatever constant scaling difference the base introduces.
 
 ## Assignment L.2 — Log Back to Dollar (Median and Mean)
 
@@ -498,7 +498,7 @@ lower_bound
 upper_bound
 ```
 
-The GSD comes out to about 1.82, and the range, roughly $26,935 to $89,218, matches the shaded green band from the Week 2 plot. In plain terms, this tells a marketer that a "typical" customer here earns somewhere between about $27,000 and $89,000, with $49,000 right in the middle as the median. Instead of leaning on a single average number, the GSD gives a sense of the realistic spread around that midpoint, which is more useful for segmenting customers or setting expectations about income variability in the target audience.
+The GSD comes out to about 1.82, and the range, roughly \$26,935 to \$89,218, matches the shaded green band from the Week 2 plot. In plain terms, this tells a marketer that a "typical" customer here earns somewhere between about \$27,000 and \$89,000, with \$49,000 right in the middle as the median. Instead of leaning on a single average number, the GSD gives a sense of the realistic spread around that midpoint, which is more useful for segmenting customers or setting expectations about income variability in the target audience.
 
 ## Assignment L.4 — Confirm with Real Data
 
@@ -534,11 +534,11 @@ mail_data |>
   )
 ```
 
-The empirical median and mean of `income` land close to, but not exactly on, the theoretical values of $49,021 and $58,689. That's expected since `mail_data` is just a finite sample of 3,000 customers, not the infinite population the `meanlog` and `sdlog` parameters describe, so some wiggle from sampling is normal. When I back-transform the median and mean of `log_income` with `exp()`, the median comes back cleanly since exponentiation preserves rank order, but exponentiating the mean of `log_income` doesn't perfectly recover the mean of the original `income` column. That gap is the same Jensen's inequality thing from L.2, the mean of a log-transformed variable tends to underestimate the true mean once you exponentiate it back, because the transform is concave and the averaging happens before the back-transform, not after.
+The empirical median and mean of `income` land close to, but not exactly on, the theoretical values of \$49,021 and \$58,689. That's expected since `mail_data` is just a finite sample of 3,000 customers, not the infinite population the `meanlog` and `sdlog` parameters describe, so some wiggle from sampling is normal. When I back-transform the median and mean of `log_income` with `exp()`, the median comes back cleanly since exponentiation preserves rank order, but exponentiating the mean of `log_income` doesn't perfectly recover the mean of the original `income` column. That gap is the same Jensen's inequality thing from L.2, the mean of a log-transformed variable tends to underestimate the true mean once you exponentiate it back, because the transform is concave and the averaging happens before the back-transform, not after.
 
 ## Assignment L.5 — Base 10 vs. Natural Log
 
-> *Compute log() and log10() for $10,000, $100,000, and $1,000,000. Divide log_natural by log_base10. Does the choice of base matter for modeling given step_normalize()?*
+> *Compute log() and log10() for \$10,000, \$100,000, and \$1,000,000. Divide log_natural by log_base10. Does the choice of base matter for modeling given step_normalize()?*
 
 ```{r}
 # Step 1 & 2: build the tibble
@@ -559,7 +559,7 @@ log_comparison |>
 
 The ratio between natural log and log base 10 stays constant across all three income values, around 2.303, which is just `log(10)`. Since the two columns only differ by that fixed constant, it doesn't matter which base we use for preprocessing. `step_normalize()` centers and rescales every numeric predictor based on its own mean and standard deviation, so whatever constant difference exists between log bases gets fully soaked up by that step anyway. The model ends up seeing basically identical inputs whether `step_log()` used base 10 or natural log.
 
----
+------------------------------------------------------------------------
 
 # Exercises {#sec-exercises}
 
@@ -668,7 +668,7 @@ ncol(baked_ordinal)
 ncol(bake(mail_prep, new_data = NULL))
 ```
 
-Swapping `step_dummy()` for `step_ordinalscore()` on `loyalty_tier` cuts down the total column count in the baked data, since `loyalty_tier` used to expand into 3 dummy columns (k - 1 for 4 levels), but `step_ordinalscore()` collapses it back into one numeric column representing rank order. That makes sense since `loyalty_tier` genuinely has an order to it (Bronze < Silver < Gold < Platinum), so treating it as ordinal keeps that ordering info in one column instead of spreading it across a bunch of unordered dummies.
+Swapping `step_dummy()` for `step_ordinalscore()` on `loyalty_tier` cuts down the total column count in the baked data, since `loyalty_tier` used to expand into 3 dummy columns (k - 1 for 4 levels), but `step_ordinalscore()` collapses it back into one numeric column representing rank order. That makes sense since `loyalty_tier` genuinely has an order to it (Bronze \< Silver \< Gold \< Platinum), so treating it as ordinal keeps that ordering info in one column instead of spreading it across a bunch of unordered dummies.
 
 ## Exercise 8.3 — Interaction Term
 
@@ -817,12 +817,12 @@ ncol(bake(mail_prep, new_data = NULL))
 
 Without `update_role(customer_id, new_role = "ID")`, the recipe treats `customer_id` as just another nominal predictor instead of an identifier that should ride along but get excluded from modeling. Since `customer_id` has nearly as many unique values as there are rows, `step_dummy()` would try to expand it into a massive number of dummy columns, basically one per customer, which would blow up the baked dataset's column count way past the version where the ID role is set correctly. An ID variable should never be treated as a predictor because it carries zero real signal about the outcome, it's just a unique label, and including it risks the model essentially memorizing individual customers instead of learning patterns that generalize, which is about as bad an overfitting case as you can get.
 
----
+------------------------------------------------------------------------
 
 # Appendix {#sec-appendix}
 
-- **Published report (GitHub Pages):** [https://naran115.github.io/W04-1-Logistic-Recipes/Naranjo,%20Aldo-W04-1-Logistic-Recipes.html](https://naran115.github.io/W04-1-Logistic-Recipes/Naranjo,%20Aldo-W04-1-Logistic-Recipes.html)
-- **GitHub Repository:** [https://github.com/naran115/W04-1-Logistic-Recipes](https://github.com/naran115/W04-1-Logistic-Recipes)
+-   **Published report (GitHub Pages):** <https://naran115.github.io/W04-1-Logistic-Recipes/Naranjo,%20Aldo-W04-1-Logistic-Recipes%20(1).html>
+-   **GitHub Repository:** <https://github.com/naran115/W04-1-Logistic-Recipes>
 
 ::: {.callout-note title="Note on appendix links"}
 Update these URLs after creating the repo and enabling GitHub Pages. The file path in the Pages link should match the exact rendered HTML filename.
