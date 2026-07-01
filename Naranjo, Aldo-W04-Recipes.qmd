@@ -821,7 +821,7 @@ Without `update_role(customer_id, new_role = "ID")`, the recipe treats `customer
 
 # Appendix {#sec-appendix}
 
--   **Published report (GitHub Pages):** <https://naran115.github.io/W04-1-Logistic-Recipes/Naranjo,%20Aldo-W04-1-Logistic-Recipes%20(1).html>
+-   **Published report (GitHub Pages):** <https://naran115.github.io/W04-1-Logistic-Recipes/Naranjo,%20Aldo-W04-Recipes.html>
 -   **GitHub Repository:** <https://github.com/naran115/W04-1-Logistic-Recipes>
 
 ::: {.callout-note title="Note on appendix links"}
